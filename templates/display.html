@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MOL Auction - Display</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body class="display">
+<div class="auction-card">
+  <div class="player-pic">
+    <div class="countdown-circle">
+      <svg width="300" height="300">
+        <circle cx="150" cy="150" r="140" stroke="#ffffff50" stroke-width="10" fill="none"/>
+        <circle id="timer-circle" cx="150" cy="150" r="140" stroke="#00ff99" stroke-width="10" fill="none" stroke-dasharray="879" stroke-dashoffset="0"/>
+      </svg>
+      <img id="item-img" src="https://via.placeholder.com/280x380?text=Waiting" />
+    </div>
+    <div id="category-badge"></div>
+  </div>
+  <div class="details">
+    <div class="header">
+      <h2 id="item-name">Waiting...</h2>
+      <img id="team-logo" src="" alt="Team Logo">
+    </div>
+
+    <table id="stats-table">
+      <tr><td>Matches</td><td id="matches">-</td></tr>
+      <tr><td>Runs</td><td id="runs">-</td></tr>
+      <tr><td>Average</td><td id="avg">-</td></tr>
+      <tr><td>Strike Rate</td><td id="sr">-</td></tr>
+      <tr><td>Wickets</td><td id="wickets">-</td></tr>
+      <tr><td>Economy</td><td id="econ">-</td></tr>
+    </table>
+
+    <h1 id="bid">₹0 L</h1>
+    <h2 id="status">--</h2>
+    <div id="bid-history"></div>
+  </div>
+</div>
+
+<div id="banner"></div>
+</body>
+</html>

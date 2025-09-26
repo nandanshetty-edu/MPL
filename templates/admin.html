@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MOL Auction - Admin</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body class="admin">
+<h1>⚡ MOL Auction - Admin Panel</h1>
+
+<h2>Add Player</h2>
+<form action="/upload" method="POST" enctype="multipart/form-data">
+  <input type="text" name="name" placeholder="Player Name" required>
+  <select name="category" required>
+    <option value="Capped">Capped</option>
+    <option value="Uncapped">Uncapped</option>
+  </select>
+  <input type="number" name="base_price" placeholder="Base Price (L)" required>
+  <h3>Stats</h3>
+  <input type="number" name="matches" placeholder="Matches" required>
+  <input type="number" name="runs" placeholder="Runs" required>
+  <input type="text" name="avg" placeholder="Average" required>
+  <input type="text" name="sr" placeholder="Strike Rate" required>
+  <input type="number" name="wickets" placeholder="Wickets" required>
+  <input type="text" name="econ" placeholder="Economy" required>
+  <h3>Images</h3>
+  Player Image: <input type="file" name="image"><br>
+  Team Logo: <input type="file" name="team_logo"><br>
+  <button type="submit">Add Player</button>
+</form>
+
+<h2>Current Player Controls</h2>
+<form action="/bid" method="POST">
+  <input type="number" name="increment" placeholder="Increment (L)" required>
+  <button type="submit">Increase Bid</button>
+</form>
+
+<form action="/status" method="POST">
+  <input type="text" name="team_name" placeholder="Assign Team Name">
+  <button name="action" value="sold">Mark SOLD</button>
+  <button name="action" value="unsold">Mark UNSOLD</button>
+</form>
+
+<p>Players in Queue: {{ queue_len }}</p>
+</body>
+</html>
